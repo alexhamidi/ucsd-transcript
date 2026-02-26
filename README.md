@@ -1,6 +1,6 @@
-downloads UCSD lecture videos and lets you chat with transcripts
+downloads UCSD lecture videos and extracts transcripts
 
 python main.py downloads HLS streams from kaltura platform
-frontend/ has a web interface to extract transcripts and chat with them using gpt-4o
+frontend/ has a web interface to extract and copy transcripts
 
 useful for studying from lecture recordings
