@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.env
+
+# Video files and outputs
+*.mp4
+*.ts
+*.m4v
+*.avi
+*.mov
+segments/
+merged.*
+output.*
+
+# HTML captures
+*.html
+
+# OS files
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Frontend (Next.js)
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+frontend/*.tsbuildinfo
