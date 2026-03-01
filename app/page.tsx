@@ -7,6 +7,7 @@ export default function Home() {
   const [transcript, setTranscript] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
+  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     const savedTranscript = localStorage.getItem("transcript");
@@ -59,6 +60,8 @@ export default function Home() {
   const copyTranscript = async () => {
     try {
       await navigator.clipboard.writeText(transcript);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
     } catch (err) {
       console.error("Failed to copy transcript");
     }
@@ -106,9 +109,13 @@ export default function Home() {
               <h2 className="text-xl font-semibold text-white">Transcript</h2>
               <button
                 onClick={copyTranscript}
-                className="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors"
+                className={`px-4 py-2 rounded-lg transition-colors ${
+                  copied
+                    ? "bg-green-700 text-white"
+                    : "bg-gray-600 text-white hover:bg-gray-700"
+                }`}
               >
-                Copy
+                {copied ? "Copied!" : "Copy"}
               </button>
             </div>
             <div className="bg-[#0a0a0a] p-4 rounded-lg border border-[#333] max-h-96 overflow-y-auto">
