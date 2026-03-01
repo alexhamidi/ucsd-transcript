@@ -44,6 +44,25 @@ export async function POST(request: Request) {
       );
     }
 
+    let path: string;
+    try {
+      path = new URL(url).pathname;
+    } catch {
+      return NextResponse.json(
+        { error: "Invalid URL" },
+        { status: 400 }
+      );
+    }
+    if (!/\/\d+$/.test(path)) {
+      return NextResponse.json(
+        {
+          error:
+            "URL must point to a specific lecture, eg 'cogs169_a00/1'",
+        },
+        { status: 400 }
+      );
+    }
+
     const pageRes = await fetch(url, {
       headers: {
         "User-Agent":
